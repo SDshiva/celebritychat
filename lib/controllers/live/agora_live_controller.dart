@@ -367,7 +367,7 @@ class AgoraLiveController extends GetxController {
       }, onVideoDeviceStateChanged: (String deviceId,
           MediaDeviceType deviceType, MediaDeviceStateType deviceState) {
         // print('onVideoDeviceStateChanged $deviceState');
-      }, onLocalVideoStats: (RtcConnection connection, LocalVideoStats stats) {
+      }, onLocalVideoStats: (VideoSourceType source, LocalVideoStats stats) {
         // print('onLocalVideoStats $stats');
       }, onFirstLocalVideoFrame:
           (VideoSourceType source, int width, int height, int elapsed) {
@@ -375,7 +375,7 @@ class AgoraLiveController extends GetxController {
 
         cameraInitiated = true;
       }, onFirstLocalVideoFramePublished:
-          (RtcConnection connection, int elapsed) {
+          (VideoSourceType source, int elapsed) {
         // print('onFirstLocalVideoFramePublished');
       }),
     );

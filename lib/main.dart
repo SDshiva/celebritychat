@@ -37,6 +37,7 @@ import 'controllers/chat_and_call/chat_room_detail_controller.dart';
 import 'controllers/chat_and_call/select_user_group_chat_controller.dart';
 import 'controllers/home/home_controller.dart';
 import 'controllers/live/live_history_controller.dart';
+import 'controllers/story/story_controller.dart';
 import 'controllers/tv/live_tv_streaming_controller.dart';
 import 'controllers/auth/login_controller.dart';
 import 'controllers/misc/map_screen_controller.dart';
@@ -90,7 +91,7 @@ Future<void> main() async {
   Get.put(DashboardController());
   Get.put(UserProfileManager());
   Get.put(ClubsController());
-
+  Get.put(AppStoryController());
   Get.put(PlayerManager());
   Get.put(SettingsController());
   Get.put(SubscriptionPackageController());
@@ -121,8 +122,11 @@ Future<void> main() async {
   setupServiceLocator();
 
   final UserProfileManager userProfileManager = Get.find();
+  String? authKey = await SharedPrefs().getAuthorizationKey();
 
-  await userProfileManager.refreshProfile();
+  if (authKey != null) {
+    await userProfileManager.refreshProfile();
+  }
 
   final SettingsController settingsController = Get.find();
   await settingsController.getSettings();

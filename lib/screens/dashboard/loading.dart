@@ -7,6 +7,7 @@ import 'package:local_auth/local_auth.dart';
 import '../../controllers/misc/subscription_packages_controller.dart';
 import '../../manager/socket_manager.dart';
 import '../../util/shared_prefs.dart';
+import '../live/live_users_screen.dart';
 import '../login_sign_up/set_user_name.dart';
 import '../login_sign_up/tutorial_screen.dart';
 import 'dashboard_screen.dart';
@@ -29,13 +30,14 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    packageController.initiate();
   }
 
   openNextScreen() {
     if (_userProfileManager.isLogin == true) {
+      packageController.initiate();
       if (_userProfileManager.user.value!.userName.isNotEmpty) {
-        Get.offAll(() => const DashboardScreen());
+        Get.offAll(() => const LiveUserScreen());
+        // Get.offAll(() => const DashboardScreen());
 
         getIt<SocketManager>().connect();
       } else {

@@ -118,7 +118,6 @@ class DBManager {
     if (existingRoom == null) {
       // save room in database
       _chatDetailController.getRoomDetail(message.roomId, (chatroom) async {
-
         await getIt<DBManager>().saveRooms([chatroom]);
         await getIt<DBManager>().saveMessage(chatMessages: [message]);
       });
@@ -135,6 +134,7 @@ class DBManager {
 
     for (ChatRoomModel chatRoom in chatRooms) {
       ChatRoomModel? room = await getRoomById(chatRoom.id);
+      // print("Room : ___________________________ $room");
       if (room == null) {
         batch.rawInsert(
             'INSERT INTO ChatRooms(id, title, status,type,is_chat_user_online,created_by,created_at,updated_at,imageUrl,description,chat_access_group) VALUES(${chatRoom.id},"${chatRoom.name}", ${chatRoom.status},${chatRoom.type}, ${chatRoom.isOnline == true ? 1 : 0},${chatRoom.createdBy},${chatRoom.createdAt},${chatRoom.createdAt},"${chatRoom.image}","${chatRoom.description}",${chatRoom.groupAccess})');
@@ -188,16 +188,16 @@ class DBManager {
           'last_message_id = "${lastMessage?.localMessageId}" '
           'WHERE id = ${chatRoom.id}');
     } else {
-      batch.rawUpdate('UPDATE ChatRooms '
-          'SET title = "${chatRoom.name}",'
-          'status = ${chatRoom.status},'
-          'type = ${chatRoom.type},'
-          'is_chat_user_online = ${chatRoom.isOnline == true ? 1 : 0},'
-          'imageUrl = "${chatRoom.image}",'
-          'description = "${chatRoom.description}",'
-          'chat_access_group = ${chatRoom.groupAccess},'
-          'last_message_id = "${lastMessage?.localMessageId}" '
-          'WHERE id = ${chatRoom.id}');
+      // batch.rawUpdate('UPDATE ChatRooms '
+      //     'SET title = "${chatRoom.name}",'
+      //     'status = ${chatRoom.status},'
+      //     'type = ${chatRoom.type},'
+      //     'is_chat_user_online = ${chatRoom.isOnline == true ? 1 : 0},'
+      //     'imageUrl = "${chatRoom.image}",'
+      //     'description = "${chatRoom.description}",'
+      //     'chat_access_group = ${chatRoom.groupAccess},'
+      //     'last_message_id = "${lastMessage?.localMessageId}" '
+      //     'WHERE id = ${chatRoom.id}');
     }
 
     batch.rawDelete(

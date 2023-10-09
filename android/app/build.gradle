@@ -48,7 +48,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.socialified"
+        applicationId "com.smartlabchat"
         minSdkVersion 24
         targetSdkVersion 33
         versionCode flutterVersionCode.toInteger()
@@ -85,6 +85,10 @@ android {
             minifyEnabled true
             shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            // signingConfig signingConfigs.release
+            // minifyEnabled true  // Enable Proguard
+            // shrinkResources true // Enable resource shrinking
+            // proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 }

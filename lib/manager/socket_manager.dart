@@ -84,8 +84,8 @@ class SocketManager {
 //Socket Global Listener Events
   dynamic socketGlobalListeners() {
     _socketInstance?.onAny((event, data) {
-      // print('event $event');
-      // print('data $data');
+      print('event $event');
+      print('data $data');
       // Handle the incoming event and data here
     });
     _socketInstance?.on(SocketConstants.eventConnect, onConnect);
@@ -146,10 +146,11 @@ class SocketManager {
   bool emit(String event, Map<String, dynamic> data) {
     log('emiting ${_socketInstance!.connected}');
     if (_socketInstance!.connected == true) {
+      log("woorking!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
       log('event == $event ========== data = ${jsonDecode(json.encode(data))}');
       _socketInstance?.emit(event, jsonDecode(json.encode(data)));
     } else {
-      // print('socked is not connected');
+      print('socked is not connected');
       cachedRequests.add(CachedRequest(event: event, data: data));
     }
     return _socketInstance!.connected;
@@ -173,12 +174,12 @@ class SocketManager {
 
   //Get This Event After Connection Lost To Socket Due To Network Or Any Other Reason
   dynamic onDisconnect(_) {
-    // print("===> Socket Disconnected....................");
+    print("===> Socket Disconnected....................");
   }
 
   //Get This Event After Connection Error To Socket With Error
   dynamic onConnectError(error) {
-    // print("===> ConnectError socket.................... $error");
+    print("===> ConnectError socket.................... $error");
   }
 
   //Get This Event When your call is created
@@ -276,6 +277,7 @@ class SocketManager {
   }
 
   addedInRoom(dynamic response) {
+    print("Response ------------------------------- $response");
     int userIdActionedBy = response['userIdActiondBy'];
     if (userIdActionedBy != _userProfileManager.user.value!.id) {
       response['action'] =

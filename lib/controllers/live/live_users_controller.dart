@@ -10,8 +10,11 @@ class LiveUserController extends GetxController {
   void getLiveUsers() async {
     LiveStreamingApi.getAllLiveUsers(resultCallback: (result) {
       liveStreamUser.addAll(result);
-      liveStreamUser.unique((e)=> e.id);
-
+      liveStreamUser.unique((e) => e.id);
     });
+  }
+
+  void clear() {
+    liveStreamUser.clear();
   }
 }

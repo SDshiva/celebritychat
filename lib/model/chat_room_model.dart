@@ -93,7 +93,7 @@ class ChatRoomModel {
       updatedAt: jsonData['updated_at'],
       createdBy: jsonData['created_by'],
       isOnline: jsonData['is_chat_user_online'] == 1,
-      isGroupChat: jsonData['type'] == 2,
+      isGroupChat: jsonData['type'] != 1,
       type: jsonData['type'],
       image: jsonData['imageUrl'],
       description: jsonData['description'],
@@ -117,7 +117,7 @@ class ChatRoomModel {
           : ChatMessageModel.fromJson(jsonData['lastMessage']));
 
   Map<String, dynamic> toJson() {
-    // print(users.first.toJson());
+    print("Ki ase dekha bhai!!!!!!!!!!!!!${ChatRoomMember.fromJson}");
     return {
       'id': id,
       'title': name,

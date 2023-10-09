@@ -5,9 +5,10 @@
     <application
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
-        android:label="Socialified"
+        android:label="Celebrity Chat"
         android:requestLegacyExternalStorage="true"
         tools:replace="android:label"
+        
         >
         <activity
             android:name=".MainActivity"
@@ -52,13 +53,13 @@
             android:value="call_channel_id" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+            android:value="282609741298856" />
         <meta-data
             android:name="com.facebook.sdk.ClientToken"
-            android:value="@string/facebook_client_token" />
+            android:value="2c05542fb16511ae02cd851b64329170" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/admob_id" />
+            android:value="ca-app-pub-5553107036794007~8266996158" />
 
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_map_id"/>

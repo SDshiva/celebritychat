@@ -1,33 +1,42 @@
 {
   "project_info": {
-    "project_number": "258656413911",
-    "project_id": "socialified-23223",
-    "storage_bucket": "socialified-23223.appspot.com"
+    "project_number": "318565064413",
+    "firebase_url": "https://smartlabchat-default-rtdb.firebaseio.com",
+    "project_id": "smartlabchat",
+    "storage_bucket": "smartlabchat.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:258656413911:android:bfa88e695cffd921626892",
+        "mobilesdk_app_id": "1:318565064413:android:5bd148f360412ac58bc534",
         "android_client_info": {
-          "package_name": "com.socialified"
+          "package_name": "com.smartlabchat"
         }
       },
       "oauth_client": [
         {
-          "client_id": "258656413911-iv8cgfsd2khapjnbpse2ef2oan4d1hjt.apps.googleusercontent.com",
+          "client_id": "318565064413-kk0024op2doubls53g7mn08t4c86cuql.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.smartlabchat",
+            "certificate_hash": "8dacae55c0372826681631d77e10904b5458aee4"
+          }
+        },
+        {
+          "client_id": "318565064413-snc41g4016il1i6oagf6n61f1t621jni.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDWN8fMFHp-PFXbY9Duu0uDsXJ-_DGSI9w"
+          "current_key": "AIzaSyDhAnomuidV07HEWXTXtYM30arAfEtQdc4"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "258656413911-iv8cgfsd2khapjnbpse2ef2oan4d1hjt.apps.googleusercontent.com",
+              "client_id": "318565064413-snc41g4016il1i6oagf6n61f1t621jni.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

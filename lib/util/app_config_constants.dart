@@ -7,19 +7,21 @@ final SettingsController settingsController = Get.find();
 
 class AppConfigConstants {
   // Name of app
-  static String appName = 'Socialified';
+  static String appName = 'Celebrity Chat';
 
-  static String currentVersion = '2.1';
+  static String currentVersion = '2.2';
   static const liveAppLink = 'https://www.google.com/';
 
   static String appTagline = 'Share your day activity with friends';
   static const googleMapApiKey = 'add your google map api key';
 
   static const restApiBaseUrl =
-      'https://product.fwdtechnology.co/socialified/api/web/v1/';
+      'http://smartlabchat.celibritychatbd.com/api/web/v1/';
 
   // Socket api url
-  static const socketApiBaseUrl = "https://product.fwdtechnology.co:4000/";
+  // static const socketApiBaseUrl = "http://127.0.0.1:4000/";
+  static const socketApiBaseUrl =
+      "http://socket.smartlabchat.celibritychatbd.com:30002/";
 
   // Chat encryption key -- DO NOT CHANGE THIS
   static const encryptionKey = 'bbC2H19lkVbQDfakxcrtNMQdd0FloLyw';
@@ -45,7 +47,7 @@ class DesignConstants {
 
 class AppColorConstants {
   static Color themeColor = settingsController.setting.value == null
-      ? Colors.blue
+      ? const Color.fromRGBO(255, 95, 31, 1)
       : HexColor.fromHex(settingsController.setting.value!.themeColor!);
 
   static Color get backgroundColor => isDarkMode
@@ -70,8 +72,8 @@ class AppColorConstants {
       ? Colors.white.withOpacity(0.2)
       : Colors.black.withOpacity(0.2);
 
-  static Color get inputFieldBackgroundColor =>
-      isDarkMode ? const Color(0xFF212121) : const Color(0xFF212121);
+  // static Color get inputFieldBackgroundColor =>
+  //     isDarkMode ? const Color(0xFF212121) : const Color(0xFF212121);
 
   static Color get iconColor =>
       isDarkMode ? Colors.white : const Color(0xFF212121);
@@ -79,8 +81,9 @@ class AppColorConstants {
   static Color get inputFieldTextColor =>
       isDarkMode ? const Color(0xFFFAFAFA) : const Color(0xFF212121);
 
-  static Color get inputFieldPlaceholderTextColor =>
-      isDarkMode ? const Color(0xFF3F434E) : const Color(0xFF9E9E9E);
+  static Color get inputFieldPlaceholderTextColor => isDarkMode
+      ? const Color(0xFFFAFAFA).lighten()
+      : const Color(0xFF212121).darken();
 
   static Color get red => isDarkMode ? Colors.red : Colors.red;
 

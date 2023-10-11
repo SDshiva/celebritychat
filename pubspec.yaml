@@ -52,8 +52,8 @@ dependencies:
   country_picker: ^2.0.20
   adaptive_action_sheet: ^2.0.2
   video_player: ^2.7.2
-  firebase_messaging: ^14.6.8
-  firebase_core: ^2.16.0
+  firebase_messaging: ^14.6.9
+  firebase_core: ^2.17.0
   get: ^4.6.5
   dots_indicator: ^3.0.0
   flutter_easyloading: ^3.0.5
@@ -77,7 +77,7 @@ dependencies:
   focused_menu: ^1.0.5
   flutter_fgbg: ^0.3.0
   pip_view: ^0.9.7
-  google_sign_in: ^6.1.4
+  google_sign_in: ^6.1.5
   flutter_callkit_incoming: ^2.0.0+1
   uuid: ^3.0.7
   mime_type: ^1.0.0

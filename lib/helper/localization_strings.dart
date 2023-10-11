@@ -129,7 +129,7 @@ String wrongOTPString = 'Wrong OTP, please enter the correct OTP';
 String resendOTPString = 'Resend OTP';
 
 String pleaseEnterOneTimePasswordString =
-    "Please enter the one time password sent to your email to verify your account and change your password";
+    "Please enter the one time password sent to your respective email or phone number to verify your account and change your password";
 
 String pleaseEnterOneTimePasswordPhoneNumberChangeString =
     "Please enter the one time password sent to your phone number to verify your phone number";
@@ -212,8 +212,10 @@ String enterConfirmPasswordString = 'Enter confirm password';
 String enterOldPasswordString = 'Enter old password';
 String pleaseEnterYourPassword = 'Please enter you password';
 String passwordIsToShort = 'Your password is too short';
-String passwordIsShortButAcceptable = 'Your password is acceptable but not strong';
-String passwordMustByAlphanumeric = 'Your password must contain letter and number';
+String passwordIsShortButAcceptable =
+    'Your password is acceptable but not strong';
+String passwordMustByAlphanumeric =
+    'Your password must contain letter and number';
 String passwordIsGreat = 'Your password is great';
 String pleaseEnterCategoryNameString = 'Please enter category name';
 String pleaseEnterSliderNameString = 'Please enter slider name';

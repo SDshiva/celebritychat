@@ -13,6 +13,7 @@ import '../../manager/location_manager.dart';
 import '../../manager/socket_manager.dart';
 import '../../util/shared_prefs.dart';
 import '../dashboard/dashboard_screen.dart';
+import '../live/live_users_screen.dart';
 import '../settings_menu/settings_controller.dart';
 
 /// Returns the sha256 hash of [input] in hex notation.
@@ -35,6 +36,7 @@ class _SocialLoginState extends State<SocialLogin> {
   // final FirebaseAuth _auth = FirebaseAuth.instance;
   final SettingsController _settingsController = Get.find();
   final UserProfileManager _userProfileManager = Get.find();
+  final facebookLogin = FacebookLogin();
 
   final GoogleSignIn _googleSignIn = GoogleSignIn(
     scopes: <String>[
@@ -140,9 +142,11 @@ class _SocialLoginState extends State<SocialLogin> {
   }
 
   void fbSignInAction() async {
+    // print("facebook signIn clicked");
     FocusScope.of(context).requestFocus(FocusNode());
-    final facebookLogin = FacebookLogin();
-    facebookLogin.logOut();
+    // final facebookLogin = FacebookLogin();
+    // facebookLogin.logOut();
+    // print("facebook signIn clicked222");
     final result = await facebookLogin.logIn(permissions: [
       FacebookPermission.publicProfile,
       FacebookPermission.email,
@@ -221,7 +225,7 @@ class _SocialLoginState extends State<SocialLogin> {
               // ask for location
               isLoginFirstTime = false;
               getIt<LocationManager>().postLocation();
-              Get.offAll(() => const DashboardScreen());
+              Get.offAll(() => const LiveUserScreen());
             }
             getIt<SocketManager>().connect();
           }

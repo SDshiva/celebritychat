@@ -25,8 +25,6 @@ class CompetitionDetailState extends State<CompetitionDetailScreen> {
 
   @override
   void initState() {
-    super.initState();
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // if (widget.competition != null) {
       //   competitionController.setCompetition(widget.competition!);
@@ -34,6 +32,7 @@ class CompetitionDetailState extends State<CompetitionDetailScreen> {
       competitionController.loadCompetitionDetail(id: widget.competitionId);
       // }
     });
+    super.initState();
   }
 
   @override
@@ -137,8 +136,10 @@ class CompetitionDetailState extends State<CompetitionDetailScreen> {
                                 competitionController.competition.value!
                                             .competitionMediaType ==
                                         1
-                                    ? addPhotoGrid().hp(DesignConstants.horizontalPadding)
-                                    : addVideoGrid().hp(DesignConstants.horizontalPadding),
+                                    ? addPhotoGrid()
+                                        .hp(DesignConstants.horizontalPadding)
+                                    : addVideoGrid()
+                                        .hp(DesignConstants.horizontalPadding),
                               ])),
                           addBottomActionButton()
                         ]),
@@ -155,7 +156,8 @@ class CompetitionDetailState extends State<CompetitionDetailScreen> {
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       model.exampleImages.isNotEmpty
-          ? Heading4Text(exampleVideosString.tr, weight: TextWeight.bold).hp(DesignConstants.horizontalPadding)
+          ? Heading4Text(exampleVideosString.tr, weight: TextWeight.bold)
+              .hp(DesignConstants.horizontalPadding)
           : Container(),
       const SizedBox(height: 65)
     ]).hp(DesignConstants.horizontalPadding);

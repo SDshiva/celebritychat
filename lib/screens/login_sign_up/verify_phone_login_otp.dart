@@ -5,7 +5,8 @@ import '../../controllers/auth/login_controller.dart';
 class VerifyRegistrationOTP extends StatefulWidget {
   final String token;
 
-  const VerifyRegistrationOTP({Key? key, required this.token}) : super(key: key);
+  const VerifyRegistrationOTP({Key? key, required this.token})
+      : super(key: key);
 
   @override
   VerifyRegistrationOTPState createState() => VerifyRegistrationOTPState();
@@ -43,7 +44,7 @@ class VerifyRegistrationOTPState extends State<VerifyRegistrationOTP> {
             textAlign: TextAlign.start,
           ),
           BodyLargeText(
-            pleaseEnterOneTimePasswordPhoneNumberChangeString.tr,
+            pleaseEnterOneTimePasswordString.tr,
             textAlign: TextAlign.center,
           ).setPadding(top: 43, bottom: 35),
           Obx(() => PinCodeTextField(
@@ -84,7 +85,9 @@ class VerifyRegistrationOTPState extends State<VerifyRegistrationOTP> {
                   BodyLargeText(
                     didntReceivedCodeString.tr,
                   ),
-                  const SizedBox(width: 5,),
+                  const SizedBox(
+                    width: 5,
+                  ),
                   BodyLargeText(
                     resendOTPString.tr,
                     weight: TextWeight.bold,
@@ -93,8 +96,7 @@ class VerifyRegistrationOTPState extends State<VerifyRegistrationOTP> {
                         : AppColorConstants.themeColor,
                   ).ripple(() {
                     if (loginController.canResendOTP.value == true) {
-                      loginController.resendOTP(
-                          token: widget.token);
+                      loginController.resendOTP(token: widget.token);
                     }
                   }),
                   loginController.canResendOTP.value == false

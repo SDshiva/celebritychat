@@ -1,6 +1,7 @@
 import 'package:foap/helper/imports/common_import.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../apiHandler/apis/auth_api.dart';
+import '../../screens/live/live_users_screen.dart';
 import '../../screens/login_sign_up/set_user_name.dart';
 import '../../screens/login_sign_up/verify_phone_login_otp.dart';
 import '../../util/shared_prefs.dart';
@@ -54,7 +55,8 @@ class LoginController extends GetxController {
             if (_userProfileManager.user.value!.userName.isEmpty) {
               Get.to(() => const SetUserName())!.then((value) {});
             } else {
-              Get.offAll(() => const DashboardScreen());
+              // Get.offAll(() => const DashboardScreen());
+              Get.offAll(() => const LiveUserScreen());
               getIt<SocketManager>().connect();
             }
           });
@@ -285,7 +287,8 @@ class LoginController extends GetxController {
                   // AppUtil.showToast(
                   //     message: registeredSuccessFully,
                   //     isSuccess: true);
-                  Get.to(() => const DashboardScreen());
+                  // Get.to(() => const DashboardScreen());
+                  Get.to(() => const LiveUserScreen());
                 }
               }
             });
@@ -325,7 +328,7 @@ class LoginController extends GetxController {
                 isLoginFirstTime = true;
                 Get.offAll(() => const SetUserName());
               } else {
-                Get.to(() => const DashboardScreen());
+                Get.to(() => const LiveUserScreen());
               }
             }
           });

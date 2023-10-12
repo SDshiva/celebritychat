@@ -44,7 +44,7 @@ class CompetitionController extends GetxController {
           page: page,
           resultCallback: (result, metadata) {
             allCompetitions.addAll(result);
-            allCompetitions.unique((e)=> e.id);
+            allCompetitions.unique((e) => e.id);
 
             current.value =
                 allCompetitions.where((element) => element.isOngoing).toList();
@@ -90,9 +90,9 @@ class CompetitionController extends GetxController {
         id: id,
         resultCallback: (result) {
           competition.value = result;
-
           update();
         });
+    // update();
   }
 
   void joinCompetition(CompetitionModel competition, BuildContext context) {

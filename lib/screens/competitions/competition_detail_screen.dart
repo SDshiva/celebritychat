@@ -19,20 +19,21 @@ class CompetitionDetailScreen extends StatefulWidget {
 }
 
 class CompetitionDetailState extends State<CompetitionDetailScreen> {
-  final CompetitionController competitionController = CompetitionController();
+  final CompetitionController competitionController = Get.find();
   final SettingsController settingsController = Get.find();
   final UserProfileManager _userProfileManager = Get.find();
 
   @override
   void initState() {
+    super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       // if (widget.competition != null) {
       //   competitionController.setCompetition(widget.competition!);
       // } else {
+      print("hosdfhoas");
       competitionController.loadCompetitionDetail(id: widget.competitionId);
       // }
     });
-    super.initState();
   }
 
   @override
@@ -62,6 +63,7 @@ class CompetitionDetailState extends State<CompetitionDetailScreen> {
                         settingsController.setting.value!.disclaimerUrl!))) {
                       await launchUrl(Uri.parse(
                           settingsController.setting.value!.disclaimerUrl!));
+                      // print("executed");
                     } else {
                       // throw 'Could not launch $url';
                     }
@@ -88,8 +90,11 @@ class CompetitionDetailState extends State<CompetitionDetailScreen> {
           GetBuilder<CompetitionController>(
               init: competitionController,
               builder: (ctx) {
-                return competitionController.competition.value != null
-                    ? Expanded(
+                return competitionController.competition.value == null
+                    ? Container(
+                        // child: Text("no data found"),
+                        )
+                    : Expanded(
                         child: Stack(children: [
                           SingleChildScrollView(
                               child: Column(
@@ -143,8 +148,7 @@ class CompetitionDetailState extends State<CompetitionDetailScreen> {
                               ])),
                           addBottomActionButton()
                         ]),
-                      )
-                    : Container();
+                      );
               }),
         ],
       ),
@@ -154,56 +158,60 @@ class CompetitionDetailState extends State<CompetitionDetailScreen> {
   Widget addVideoGrid() {
     CompetitionModel model = competitionController.competition.value!;
 
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      model.exampleImages.isNotEmpty
-          ? Heading4Text(exampleVideosString.tr, weight: TextWeight.bold)
-              .hp(DesignConstants.horizontalPadding)
-          : Container(),
-      const SizedBox(height: 65)
-    ]).hp(DesignConstants.horizontalPadding);
+    return Center(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        model.exampleImages.isNotEmpty
+            ? Heading4Text(exampleVideosString.tr, weight: TextWeight.bold)
+                .hp(DesignConstants.horizontalPadding)
+            : Container(),
+        const SizedBox(height: 65)
+      ]).hp(DesignConstants.horizontalPadding),
+    );
   }
 
   Widget addPhotoGrid() {
     CompetitionModel model = competitionController.competition.value!;
 
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      model.exampleImages.isNotEmpty
-          ? Heading3Text(
-              examplePhotosString.tr,
-              weight: TextWeight.medium,
-            )
-          : Container(),
-      const SizedBox(
-        height: 20,
-      ),
-      GridView.builder(
-        itemCount: model.exampleImages.length,
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        // You won't see infinite size error
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            crossAxisSpacing: 4.0,
-            mainAxisSpacing: 4.0,
-            mainAxisExtent: 100),
-        itemBuilder: (BuildContext context, int index) => InkWell(
-            onTap: () async {
-              // File path = await AppUtil.findPath(model.exampleImages[index]);
+    return Center(
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        model.exampleImages.isNotEmpty
+            ? Heading3Text(
+                examplePhotosString.tr,
+                weight: TextWeight.medium,
+              )
+            : Container(),
+        const SizedBox(
+          height: 20,
+        ),
+        GridView.builder(
+          itemCount: model.exampleImages.length,
+          // physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          // You won't see infinite size error
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 4.0,
+              mainAxisSpacing: 4.0,
+              mainAxisExtent: 100),
+          itemBuilder: (BuildContext context, int index) => InkWell(
+              onTap: () async {
+                // File path = await AppUtil.findPath(model.exampleImages[index]);
 
-              // Get.to(
-              //     () => EnlargeImageViewScreen(model: model!, handler: () {}));
-            },
-            child: CachedNetworkImage(
-              imageUrl: model.exampleImages[index],
-              fit: BoxFit.cover,
-              placeholder: (context, url) =>
-                  AppUtil.addProgressIndicator(size: 100),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            ).round(10)),
-        // staggeredTileBuilder: (int index) => new StaggeredTile.count(1, 1),
-      ),
-      const SizedBox(height: 65)
-    ]);
+                // Get.to(
+                //     () => EnlargeImageViewScreen(model: model!, handler: () {}));
+              },
+              child: CachedNetworkImage(
+                imageUrl: model.exampleImages[index],
+                fit: BoxFit.cover,
+                placeholder: (context, url) =>
+                    AppUtil.addProgressIndicator(size: 100),
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+              ).round(10)),
+          // staggeredTileBuilder: (int index) => new StaggeredTile.count(1, 1),
+        ),
+        const SizedBox(height: 65)
+      ]),
+    );
   }
 
   applyShader() {
@@ -262,7 +270,7 @@ class CompetitionDetailState extends State<CompetitionDetailScreen> {
           },
           child: Container(
             width: Get.width,
-            height: 95,
+            height: 60,
             color: AppColorConstants.themeColor,
             child: Center(
               child: Heading6Text(
